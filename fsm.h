@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FSM_H
+#define FSM_H
 
 typedef void (*ActionFunc)();
 
@@ -56,3 +57,5 @@ class FSM {
      */
     void ApplyTransition(const Transition &t);
 };
+
+#endif
