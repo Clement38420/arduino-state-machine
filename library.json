@@ -1,0 +1,31 @@
+{
+  "name": "arduino-state-machine",
+  "version": "1.0.0",
+  "description": "A lightweight state machine library for Arduino projects.",
+  "keywords": [
+    "state-machine",
+    "arduino",
+    "embedded",
+    "fsm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/arduino-state-machine.git"
+  },
+  "authors": [
+    {
+      "name": "Clement Charbonnel",
+      "email": "c.charbo38@gmail.com",
+      "maintainer": true
+    }
+  ],
+  "license": "MIT",
+  "frameworks": [
+    "arduino"
+  ],
+  "platforms": [
+    "atmelavr",
+    "espressif32",
+    "espressif8266"
+  ]
+}
