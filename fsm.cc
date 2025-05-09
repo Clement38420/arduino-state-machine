@@ -1,9 +1,9 @@
 #include <fsm.h>
 
-FSM::FSM(State *initial_state, Transition transitions[]) {
+FSM::FSM(State *initial_state, Transition transitions[], const int number_of_transitions) {
   current_state_ = initial_state;
   transitions_ = transitions;
-  number_of_transitions_ = sizeof(transitions) / sizeof(Transition);
+  number_of_transitions_ = number_of_transitions;
 }
 
 State *FSM::ProcessStateTransitions() {

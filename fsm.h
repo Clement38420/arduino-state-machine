@@ -31,8 +31,9 @@ class FSM {
      * Constructs an FSM with an initial state and a set of transitions.
      * @param initial_state The initial state of the FSM.
      * @param transitions The array of transitions for the FSM.
+     * @param number_of_transitions The size of the array of transitions.
      */
-    FSM(State *initial_state, Transition transitions[]);
+    FSM(State *initial_state, Transition transitions[], int number_of_transitions);
 
     /**
      * Gets the current state of the FSM.
