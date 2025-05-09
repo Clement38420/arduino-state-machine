@@ -47,6 +47,13 @@ class FSM {
      */
     State *ProcessStateTransitions();
 
+    /**
+     * @brief Launches the state machine.
+     *
+     * It actually executes the current state entry action.
+     */
+    void Begin() const;
+
   private:
     State *current_state_;
     Transition *transitions_; /**< The array of transitions for the FSM. */
@@ -57,6 +64,12 @@ class FSM {
      * @param t The transition to apply.
      */
     void ApplyTransition(const Transition &t);
+
+    /**
+     * Execute an action if it exists.
+     * @param action The action to check and execute.
+     */
+    static void ExecuteAction(ActionFunc action);
 };
 
 #endif

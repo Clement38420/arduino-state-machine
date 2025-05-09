@@ -6,6 +6,16 @@ FSM::FSM(State *initial_state, Transition transitions[], const int number_of_tra
   number_of_transitions_ = number_of_transitions;
 }
 
+void FSM::Begin() const {
+  ExecuteAction(GetCurrentState()->on_entry_action);
+}
+
+void FSM::ExecuteAction(const ActionFunc action) {
+  if (action) {
+    action();
+  }
+}
+
 State *FSM::ProcessStateTransitions() {
   for (int i = 0; i < number_of_transitions_; i++) {
     const Transition &t = transitions_[i];
@@ -18,18 +28,13 @@ State *FSM::ProcessStateTransitions() {
 }
 
 void FSM::ApplyTransition(const Transition &t) {
-  if (current_state_->on_exit_action) {
-    current_state_->on_exit_action();
-  }
+  ExecuteAction(GetCurrentState()->on_exit_action);
+  ExecuteAction(t.action);
 
   if (t.action) {
     t.action();
   }
 
-  current_state_ = t.next_state;
-
-  if (current_state_->on_entry_action) {
-    current_state_->on_entry_action();
-  }
+  ExecuteAction(GetCurrentState()->on_entry_action);
 }
 
