@@ -19,21 +19,19 @@ void FSM::ExecuteAction(const ActionFunc action) {
 State *FSM::ProcessStateTransitions() {
   for (int i = 0; i < number_of_transitions_; i++) {
     const Transition &t = transitions_[i];
-    if (t.current_state == current_state_ && t.condition()) {
+    if (t.current_state == GetCurrentState() && t.condition()) {
       ApplyTransition(t);
       break;
     }
   }
-  return current_state_;
+  return GetCurrentState();
 }
 
 void FSM::ApplyTransition(const Transition &t) {
   ExecuteAction(GetCurrentState()->on_exit_action);
   ExecuteAction(t.action);
 
-  if (t.action) {
-    t.action();
-  }
+  SetCurrentState(t.next_state);
 
   ExecuteAction(GetCurrentState()->on_entry_action);
 }

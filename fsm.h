@@ -39,7 +39,8 @@ class FSM {
      * Gets the current state of the FSM.
      * @return A pointer to the current state.
      */
-    State *GetCurrentState() const { return current_state_; };
+    State *GetCurrentState() const { return current_state_; }
+    void SetCurrentState(State *state) { current_state_ = state; }
 
     /**
      * Processes state transitions by evaluating conditions and applying the first valid transition.
