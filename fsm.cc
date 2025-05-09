@@ -19,7 +19,7 @@ State *FSM::ProcessStateTransitions() {
 
 void FSM::ApplyTransition(const Transition &t) {
   if (current_state_->on_exit_action) {
-    current_state_->on_exit_action;
+    current_state_->on_exit_action();
   }
 
   if (t.action) {
@@ -29,7 +29,7 @@ void FSM::ApplyTransition(const Transition &t) {
   current_state_ = t.next_state;
 
   if (current_state_->on_entry_action) {
-    current_state_->on_entry_action;
+    current_state_->on_entry_action();
   }
 }
 
