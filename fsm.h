@@ -43,10 +43,13 @@ class FSM {
     void SetCurrentState(State *state) { current_state_ = state; }
 
     /**
-     * Processes state transitions by evaluating conditions and applying the first valid transition.
+     * @brief Execute periodic action and processes state transitions.
+     *
+     * Transitions are processed by evaluating conditions and applying the first valid transition.
+     *
      * @return A pointer to the current state after processing transitions.
      */
-    State *ProcessStateTransitions();
+    State *RunFSM();
 
     /**
      * @brief Launches the state machine.

@@ -16,7 +16,9 @@ void FSM::ExecuteAction(const ActionFunc action) {
   }
 }
 
-State *FSM::ProcessStateTransitions() {
+State *FSM::RunFSM() {
+  ExecuteAction(GetCurrentState()->periodic_action);
+
   for (int i = 0; i < number_of_transitions_; i++) {
     const Transition &t = transitions_[i];
     if (t.current_state == GetCurrentState() && t.condition()) {
